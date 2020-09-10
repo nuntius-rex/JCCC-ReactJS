@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+  </head>
+  <body>
+    <div id="container">
+    </div>
+
+    <script type="text/babel">
+
+
+        class DisplayBox extends React.Component{
+          render(){
+
+            switch ( this.props.size ) {
+              case 'small':
+                  var boxWidth="100px";
+              break;
+              case 'medium':
+                  var boxWidth="200px";
+              break;
+              case 'large':
+                  var boxWidth="300px";
+              break;
+
+              default:
+                var boxWidth="50px";
+            }
+
+            var displayStyle={
+              backgroundColor: this.props.color,
+              border:"solid",
+              borderColor:"#000",
+              borderWidth: this.props.borderWidth,
+              width: boxWidth,
+              color: "#FFF",
+              padding: "10px",
+              fontFamily:"Arial"
+            }
+
+            return (
+                <div style={displayStyle}>
+                  <p>Color: {this.props.color}</p>
+                  <p>Width: {this.props.borderWidth}</p>
+                  <p>Size: {this.props.size}</p>
+                </div>
+            )
+          }
+        }
+
+        class Box2 extends React.Component{
+          render(){
+            return (
+              <DisplayBox color="blue" borderWidth="3" size="large" />
+            )
+          }
+        }
+
+
+        ReactDOM.render(
+          <div>
+              <DisplayBox color="red" borderWidth="2" size="medium" />
+              <Box2 />
+          </div>
+          ,document.querySelector("#container")
+        );
+
+
+
+    </script>
+
+
+
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+      <style media="screen">
+        #container{
+          border: solid 1px;
+          padding: 50px;
+          background: #fff;
+        }
+
+        #paper{
+          border: solid 1px;
+        }
+
+        .paper{
+          background-color: #5e5151;
+        }
+
+        .letter{
+          padding: 10px;
+          margin: 10px;
+          background-color: #FFDE00;
+          color:#333;
+          display: inline-block;
+          font-family: monospace;
+          font-size: 32px;
+          text-align: center;
+        }
+
+      </style>
+
+
+  </head>
+  <body>
+    <div id="container">
+    </div>
+
+    <script type="text/babel">
+
+
+        class Letter extends React.Component{
+          render(){
+            return (
+              <div className="letter">
+                {this.props.children}
+              </div>
+            )
+          }
+        }
+
+        ReactDOM.render(
+          <div id="paper" className="paper">
+              <Letter>A</Letter>
+              <Letter>B</Letter>
+          </div>
+          ,document.querySelector("#container")
+        );
+
+
+
+    </script>
+
+  </body>
+</html>

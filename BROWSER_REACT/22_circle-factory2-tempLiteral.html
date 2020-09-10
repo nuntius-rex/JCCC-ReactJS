@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+  </head>
+  <body>
+    <div id="container">
+    </div>
+
+    <script type="text/babel">
+
+
+        class CircleStyle extends React.Component{
+            render(){
+              var circleStyle=`
+              .circle{
+                padding:10px;
+                margin:20px;
+                display:inline-block;
+                border-radius:50%;
+                width:100px;
+                height:100px;
+              }
+              `;
+              return (
+                <style scoped>{circleStyle}</style>
+              )
+          }
+       }
+
+
+        class Circle extends React.Component{
+          render(){
+            var circleStyle={
+              backgroundColor:this.props.bgColor,
+              width:this.props.size,
+              height:this.props.size
+            }
+            return (
+              <div className="circle" style={circleStyle} ></div>
+            )
+          }
+        }
+
+        function createCircle(){
+          var colors=["#393E41","#E94F37","#1C89BF","#A1D363","#F9C240"];
+          var randColor=Math.floor( Math.random()*colors.length );
+
+          var sizes=["100px","110px","120px","130px","140px","150px"];
+          var randSize=Math.floor( Math.random()*sizes.length );
+
+          return <Circle bgColor={colors[randColor]} size={sizes[randSize]} />
+        }
+
+
+        ReactDOM.render(
+          <div>
+            <CircleStyle />
+            { createCircle() }
+            { createCircle() }
+            { createCircle() }
+            { createCircle() }
+            { createCircle() }
+            { createCircle() }
+            { createCircle() }
+          </div>
+
+          ,document.querySelector("#container")
+        );
+
+
+
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Multiple Renders</title>
+    <style media="screen">
+      #container1{ border: solid 1px; }
+      #container2{ border: solid 1px; }
+    </style>
+
+    	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+  </head>
+  <body>
+    <div id="container1">
+    </div>
+
+    <div id="container2">
+    </div>
+
+    <script type="text/babel">
+
+        ReactDOM.render(
+          <h1>Hello World!</h1>
+          ,document.querySelector("#container1")
+        );
+
+        ReactDOM.render(
+          <h1>Hello Class!</h1>
+          ,document.querySelector("#container1")
+        );
+
+        ReactDOM.render(
+          <h1>Hello World!</h1>
+          ,document.querySelector("#container2")
+        );
+
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+  </head>
+  <body>
+    <div id="container">
+    </div>
+
+    <script type="text/babel">
+
+
+          class Letter extends React.Component{
+
+            render(){
+
+              var letterStyle={
+                padding:10,
+                margin:10,
+                backgroundColor: this.props.bgcolor,
+                color:"#333",
+                display:"inline-block",
+                fontFamily:"monospace",
+                fontSize:32,
+                textAlign:"center",
+                border:"solid",
+                borderWidth:this.props.border,
+
+              }
+
+              return (
+                <div style={letterStyle}>
+                  {this.props.children}
+                </div>
+              )
+            }
+          }
+
+        ReactDOM.render(
+          <div>
+          <Letter bgcolor="#F8B3FF" border="1px">A</Letter>
+          <Letter bgcolor="#FF605F" border="2px">B</Letter>
+          <Letter bgcolor="#FFD52E" border="3px">C</Letter>
+          <Letter bgcolor="#49DD8E" border="2px">D</Letter>
+          <Letter bgcolor="#AE99FF" border="1px">E</Letter>
+          </div>
+          ,document.querySelector("#container")
+        );
+
+
+/*
+        var letterStyleTL=`
+          Letter{
+            padding:10px;
+            margin:10px;
+            background-color: SETTING HERE;
+            color:#333;
+            display:inline-block;
+            font-family: monospace;
+            font-size: 32,
+            text-align:center;
+          }
+        `;
+*/
+
+
+    </script>
+
+  </body>
+</html>

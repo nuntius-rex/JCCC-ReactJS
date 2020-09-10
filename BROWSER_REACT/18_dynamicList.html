@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+  </head>
+  <body>
+    <div id="container">
+    </div>
+
+    <script type="text/babel">
+
+        var peopleArray=[
+          'Iron Man',
+          'Captain America',
+          'The Hulk',
+          'Thor',
+          'Black Widow'
+        ];
+
+        var peopleList=peopleArray.map(function(person,i){
+            return <li key={i}>{person}</li>
+        });
+
+        /*
+        var peopleList=peopleArray.filter(function(person,i){
+            if(person=="Iron Man"){
+              return <li key={i}>{person}</li>
+              //return person;
+            }
+        });
+        */
+
+        ReactDOM.render(
+          <div>
+            <ul>{peopleList}</ul>
+          </div>
+          ,document.querySelector("#container")
+        );
+
+
+
+    </script>
+
+  </body>
+</html>

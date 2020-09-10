@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+  </head>
+  <body>
+    <div id="container">
+    </div>
+
+    <script type="text/babel">
+
+          class ScopedStyle extends React.Component{
+            render(){
+              var letterStyle=`
+                .Letter{
+                  padding:10px;
+                  margin:10px;
+                  color:#333;
+                  display:inline-block;
+                  font-family: monospace;
+                  font-size: 32,
+                  text-align:center;
+                  border:solid;
+                  background-color: red;
+                }
+              `;
+              return (
+                <style scoped>{letterStyle}</style>
+              )
+            }
+          }
+
+          class Letter extends React.Component{
+            render(){
+              var letterStyle={
+                backgroundColor: this.props.bgcolor,
+                borderWidth:this.props.border,
+              }
+              return (
+                <div style={letterStyle} className="Letter">
+                  {this.props.children}
+                </div>
+              )
+            }
+          }
+
+        ReactDOM.render(
+          <div>
+          <ScopedStyle />
+          <Letter bgcolor="#F8B3FF" border="1px">A</Letter>
+          <Letter bgcolor="#FF605F" border="2px">B</Letter>
+          <Letter bgcolor="#FFD52E" border="3px">C</Letter>
+          <Letter bgcolor="#49DD8E" border="2px">D</Letter>
+          <Letter bgcolor="#AE99FF" border="1px">E</Letter>
+          </div>
+          ,document.querySelector("#container")
+        );
+
+
+
+
+    </script>
+
+  </body>
+</html>

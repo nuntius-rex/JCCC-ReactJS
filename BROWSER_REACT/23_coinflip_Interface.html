@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    	<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+  </head>
+  <body>
+    <div id="container">
+    </div>
+
+    <script type="text/babel">
+
+        var interfaceStyle=`
+          #coinInterface{
+            padding:5px;
+            margin-left:auto;
+            margin-right:auto;
+            border: solid 1px;
+            border-radius:10px;
+            height:280px;
+            width:150px;
+            text-align:center;
+            font-family:arial;
+          }
+        `;
+
+        class CallSelector extends React.Component{
+
+          constructor(props){
+            super(props);
+            this.handleChange=this.handleChange.bind(this);
+            this.coinToss=this.coinToss.bind(this);
+          }
+
+          handleChange(e){
+            e.persist();
+            this.setState({
+              userCall:e.target.value
+            });
+
+            this.userCall=e.target.value;
+            this.userCallText=<span>You called {this.userCall} !!!</span>;
+          }
+
+          coinToss(){
+            return Math.random() * 1 < .5 ? "heads" :"tails";
+          }
+
+          coin(){
+
+            var coin={
+              heads:"img/heads.jpg",
+              tails:"img/tails.jpg",
+            }
+
+            var picStyle={
+              width:100,
+              height:100
+            }
+
+            if(this.userCall!=undefined){
+                this.coinTossResult=this.coinToss();
+                if(this.coinTossResult=="heads"){
+                  return <div><img src={coin.heads} style={picStyle} /><br /><span>It's {this.coinTossResult}</span></div>
+                }else{
+                  return <div><img src={coin.tails} style={picStyle} /><br /><span>It's {this.coinTossResult}</span></div>
+                }
+            }
+          }
+
+          score(){
+            if(this.userCall!=undefined){
+              if(this.userCall==this.coinTossResult){
+                return <p>You Win! <br/><a href=''>Play Again</a></p>;
+              }else{
+                return <p>You Lose! <br/><a href=''>Try Again</a></p>;
+              }
+            }
+          }
+
+          render(){
+            return (
+              <div>
+                  <p>
+                  <label>Heads or Tails?</label><br />
+                  <select onChange={this.handleChange}>
+                      <option value=""></option>
+                      <option value="heads">Heads</option>
+                      <option value="tails">Tails</option>
+                  </select>
+                  </p>
+                  <p>
+                    {this.userCallText}
+                  </p>
+                  <div>{this.coin()}</div>
+                  <div>{this.score()}</div>
+              </div>
+            )
+          }
+        }
+
+        class CoinFlipContainer extends React.Component{
+          render(){
+            return (
+              <div id="coinInterface">
+              <style scoped>{interfaceStyle}</style>
+              <CallSelector/>
+
+              </div>
+            )
+          }
+        }
+
+        ReactDOM.render(
+          <CoinFlipContainer />
+          ,document.querySelector("#container")
+        );
+
+
+
+    </script>
+
+
+
+
+  </body>
+</html>
