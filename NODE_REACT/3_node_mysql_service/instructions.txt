@@ -1,0 +1,8 @@
+
+This will run a service that can be connected to from other apps:
+
+1 - Install Xampp
+2 - Open localhost/phpmyadmin/
+3 - create database ""classicmodels"
+4 - Select db and run SQL script: classicmodels.sql
+5 - run service.js with command: node service.js

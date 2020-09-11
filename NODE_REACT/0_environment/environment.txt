@@ -1,0 +1,26 @@
+1) Install NodeJS - nodejs.org
+
+2) OLDER VERSIONS : Install Create-React-App
+  npm install create-react-app
+
+ - npm = Node Package Manager
+ - install = tell npm to run install on this item
+ - -g = global
+ - create-react-app = The name of the program we are installing.
+
+ NEWER VERSIONS (SKIP THIS STEP FOR NEWER): create-react-app is included in NPM npx.
+
+3) Create an area for your apps
+ - Open Windows Explorer
+ - Navigate to location
+ - Create folder
+
+ 4) Steps to Create app
+
+  - Open Windows Explorer, navigate to folder
+  - In address bar type: CMD
+  - In Console:
+    npx create-react-app helloworld
+    cd helloworld
+    npm start
+    localhost:3000 (should open for you)
